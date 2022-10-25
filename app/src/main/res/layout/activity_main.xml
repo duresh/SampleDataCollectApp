@@ -103,6 +103,7 @@
         android:layout_marginBottom="10dp"
         android:backgroundTint="#D12626"
         android:ellipsize="none"
+        android:onClick="save"
         android:shadowColor="#9C27B0"
         android:text="@string/save"
         android:textAlignment="center"

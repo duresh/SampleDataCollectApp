@@ -7,6 +7,8 @@ import android.view.View
 import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.RadioGroup
+import android.widget.Toast
+import com.example.sampleapp.validators.mainActivityStateValidator
 
 class MainActivity : AppCompatActivity() {
 
@@ -34,15 +36,26 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun save(view:View){
-        val state = UComponantState(
-            edtFname.text.toString(),
-            edtEmail.text.toString(),
-            edtPhone.text.toString(),
-            edtAddress.text.toString(),
-            findViewById<RadioButton>(rgGender.checkedRadioButtonId).text.toString(),
-            edtDOB.text.toString()
 
-        )
-        Log.i(TAG,state.toString());
+        val nameValidate = mainActivityStateValidator.nameValidator(edtFname)
+        val emailValidate = mainActivityStateValidator.nameValidator(edtEmail)
+
+        if(nameValidate) {
+            if (emailValidate) {
+
+                val state = UComponantState(
+                    edtFname.text.toString(),
+                    edtEmail.text.toString(),
+                    edtPhone.text.toString(),
+                    edtAddress.text.toString(),
+                    findViewById<RadioButton>(rgGender.checkedRadioButtonId).text.toString(),
+                    edtDOB.text.toString()
+
+                )
+                Log.i(TAG, state.toString());
+            } else {
+                Toast.makeText(this, "Error", Toast.LENGTH_LONG).show()
+            }
+        }
     }
 }
