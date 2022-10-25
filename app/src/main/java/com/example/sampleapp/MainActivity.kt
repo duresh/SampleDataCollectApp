@@ -33,29 +33,37 @@ class MainActivity : AppCompatActivity() {
         edtDOB = findViewById(R.id.edtDOB)
         rgGender = findViewById(R.id.rgGender)
 
+
     }
 
     fun save(view:View){
 
         val nameValidate = mainActivityStateValidator.nameValidator(edtFname)
         val emailValidate = mainActivityStateValidator.nameValidator(edtEmail)
+        val phoneValidate = mainActivityStateValidator.checkValidPhoneNumber(edtPhone)
+
+
 
         if(nameValidate) {
             if (emailValidate) {
+//                if (phoneValidate) {
 
-                val state = UComponantState(
-                    edtFname.text.toString(),
-                    edtEmail.text.toString(),
-                    edtPhone.text.toString(),
-                    edtAddress.text.toString(),
-                    findViewById<RadioButton>(rgGender.checkedRadioButtonId).text.toString(),
-                    edtDOB.text.toString()
+                    val state = UComponantState(
+                        edtFname.text.toString(),
+                        edtEmail.text.toString(),
+                        edtPhone.text.toString(),
+                        edtAddress.text.toString(),
+                        findViewById<RadioButton>(rgGender.checkedRadioButtonId).text.toString(),
+                        edtDOB.text.toString()
 
-                )
-                Log.i(TAG, state.toString());
-            } else {
-                Toast.makeText(this, "Error", Toast.LENGTH_LONG).show()
-            }
+                    )
+                    Log.i(TAG, state.toString());
+                } else {
+                    Toast.makeText(this, "Error", Toast.LENGTH_LONG).show()
+                }
+//            }
         }
     }
+
+
 }
